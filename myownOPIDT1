@@ -1,0 +1,170 @@
+import pm4py
+import json
+import uuid
+#from pm4py.objects.ocel.importer.xml_ocel20 import factory as ocel_import_factory
+from pm4py.algo.discovery.ocel.ocpn.variants import classic as ocpn_discovery
+from pm4py.objects.petri_net.obj import PetriNet
+from pm4py.objects.petri_net.utils import petri_utils
+
+# === Step 1: Load OCEL log ===
+filename = "selfocel.xml"
+
+ocel =pm4py.read_ocel2_xml(filename)
+# === Step 2: Discover OCPN ===
+
+ocpn = ocpn_discovery.apply(ocel)
+
+
+def get_transition_name(transition):
+    """
+    Get a unique name for a transition, ensuring it is not already used.
+    If the transition is silent, assign a unique name based on its ID.
+    """
+    if transition.label:
+        return str(transition.label)
+    else:
+        if transition in silent_map:
+            return silent_map[transition]
+        # If not seen before, create a new entry for this silent transition
+        base_name = transition.name if transition.name is not None else "tau"
+        silent_name = base_name
+        # Ensure the chosen name is unique among all transition names used so far
+        counter = 0
+        while silent_name in used_transition_names:
+                counter += 1
+                silent_name = f"{base_name}_{counter}"
+        silent_map[transition] = silent_name
+        used_transition_names.add(silent_name)
+        transitions_json.append({
+                "name": silent_name,
+                "label": silent_name,  # for silent transitions, we use the name as the label placeholder
+                "silent": True,
+                "properties": {}
+            })
+        return silent_name
+# Initialize the JSON structure components
+places_json = []       # list of place dictionaries
+transitions_json = []  # list of transition dictionaries
+arcs_json = []         # list of arc dictionaries
+# Keep track of used transition names (to ensure uniqueness) and a map for silent transitions
+used_transition_names = set()    # collects all transition 'name' values added (both labeled and silent)
+silent_map = {}                 # maps Transition objects (silent) to their assigned unique name
+activities = ocpn.get("activities")  # all activities in the OCPN
+
+for act in activities:
+        transitions_json.append({
+            "name": str(act),    # use the activity label as the transition's unique name
+            "label": str(act),   # display label (same as name for non-silent transitions)
+            "silent": False,
+            "properties": {}       # default empty properties
+        })
+        used_transition_names.add(str(act))
+
+#print("Activities:", transitions_json)
+
+# 2. Assign unique names to all places across object types and record their attributes.
+place_name_map = {}  # map from Place object to unique place name
+unique_place_id = 0
+
+for ot, (net, initial_marking, final_marking) in ocpn["petri_nets"].items():
+        for place in net.places:
+            if place not in place_name_map:
+                unique_place_name = f"place_{unique_place_id}"
+                place_name_map[place] = unique_place_name
+                unique_place_id += 1
+
+            places_json.append({
+                "name": place_name_map[place],
+                "objectType": ot,
+                "initial": place in initial_marking,
+                "final": place in final_marking
+                }
+            )
+# 3. Create arcs with identity variable annotations
+#for ot, (net, initial_marking, final_marking) in ocpn["petri_nets"].items():
+        for arc in net.arcs:
+            if arc.source in place_name_map:
+                source_name = place_name_map[arc.source]
+                target_name = get_transition_name(arc.target) 
+            else:
+                source_name = get_transition_name(arc.source)
+                target_name = place_name_map[arc.target]
+
+            if type(arc.source) is PetriNet.Place:
+                is_double = (
+                    arc.target.label in ocpn["double_arcs_on_activity"][ot]
+                    and ocpn["double_arcs_on_activity"][ot][arc.target.label]
+                )
+                penwidth = "4.0" if is_double else "1.0"
+            elif type(arc.source) is PetriNet.Transition:
+                is_double = (
+                    arc.source.label in ocpn["double_arcs_on_activity"][ot]
+                    and ocpn["double_arcs_on_activity"][ot][arc.source.label]
+                )
+                penwidth = "4.0" if is_double else "1.0"
+            arcs_json.append({
+                "source": source_name,
+                "target": target_name,
+                "weight": penwidth,
+                "variable": False if penwidth == "1.0" else True,
+                "inscription": ot[0].capitalize() if is_double else ot[0],
+                "properties": {}
+            })
+# === Step 8: Add silent start and end transitions with arc inscriptions ===
+for ot, (net, initial_marking, final_marking) in ocpn["petri_nets"].items():
+    # Token-producing silent transitions (object creation)
+    for place in initial_marking:
+        silent_name = f"tau_start_{ot}_{uuid.uuid4()}"
+        transitions_json.append({
+            "name": silent_name,
+            "label": "",  # silent
+            "silent": True,
+            "properties": {}
+        })
+        arcs_json.append({
+            "source": silent_name,
+            "target": place_name_map[place],
+            "weight": "1.0",
+            "variable": False,
+            "inscription": f"v_{ot[0]}",
+            "properties": {}
+        })
+
+    # Token-consuming silent transitions (object consumption)
+    for place in final_marking:
+        silent_name = f"tau_end_{ot}_{uuid.uuid4()}"
+        transitions_json.append({
+            "name": silent_name,
+            "label": "",  # silent
+            "silent": True,
+            "properties": {}
+        })
+        arcs_json.append({
+            "source": place_name_map[place],
+            "target": silent_name,
+            "weight": "1.0",
+            "variable": False,
+            "inscription": ot[0],
+            "properties": {}
+        })
+ # 4. Compile the final JSON structure
+ocpn_json = {
+        "name": "Self OCPN Export",
+        "places": places_json,
+        "transitions": transitions_json,
+        "arcs": arcs_json,
+        "properties": {
+            "creator": "PM4Py",
+            "source": "OCPN Export",
+            "version": "1.0"
+        }
+    }
+    
+# Save the JSON dictionary to the specified file path
+output_file_path = "opidT1.json"
+with open(output_file_path, 'w') as json_file:
+    json.dump(ocpn_json, json_file, indent=4)
+    
+
+
+

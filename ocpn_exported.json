@@ -1,0 +1,236 @@
+{
+    "name": "Self OCPN Export",
+    "places": [
+        {
+            "name": "p_4_0",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "p_5_1",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "source_2",
+            "objectType": "frame",
+            "initial": true,
+            "final": false
+        },
+        {
+            "name": "sink_3",
+            "objectType": "frame",
+            "initial": false,
+            "final": true
+        },
+        {
+            "name": "p_6_4",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "p_7_5",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "source_6",
+            "objectType": "handle",
+            "initial": true,
+            "final": false
+        },
+        {
+            "name": "p_3_7",
+            "objectType": "handle",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "sink_8",
+            "objectType": "handle",
+            "initial": false,
+            "final": true
+        },
+        {
+            "name": "source_9",
+            "objectType": "wheel",
+            "initial": true,
+            "final": false
+        },
+        {
+            "name": "p_3_10",
+            "objectType": "wheel",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "sink_11",
+            "objectType": "wheel",
+            "initial": false,
+            "final": true
+        }
+    ],
+    "transitions": [
+        {
+            "name": "assemble_h",
+            "label": "assemble_h",
+            "silent": false,
+            "properties": {}
+        },
+        {
+            "name": "collect",
+            "label": "collect",
+            "silent": false,
+            "properties": {}
+        },
+        {
+            "name": "assemble_w",
+            "label": "assemble_w",
+            "silent": false,
+            "properties": {}
+        },
+        {
+            "name": "tauJoin_2",
+            "label": "tauJoin_2",
+            "silent": true,
+            "properties": {}
+        }
+    ],
+    "arcs": [
+        {
+            "source": "source_2",
+            "target": "collect",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "assemble_w",
+            "target": "p_5_1",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "p_6_4",
+            "target": "assemble_h",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "tauJoin_2",
+            "target": "sink_3",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "collect",
+            "target": "p_6_4",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "p_5_1",
+            "target": "tauJoin_2",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "p_4_0",
+            "target": "assemble_w",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "collect",
+            "target": "p_4_0",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "p_7_5",
+            "target": "tauJoin_2",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "assemble_h",
+            "target": "p_7_5",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "source_6",
+            "target": "collect",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "collect",
+            "target": "p_3_7",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "assemble_h",
+            "target": "sink_8",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "p_3_7",
+            "target": "assemble_h",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "source_9",
+            "target": "collect",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "assemble_w",
+            "target": "sink_11",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "collect",
+            "target": "p_3_10",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        },
+        {
+            "source": "p_3_10",
+            "target": "assemble_w",
+            "weight": 1,
+            "variable": false,
+            "properties": {}
+        }
+    ],
+    "properties": {
+        "creator": "PM4Py",
+        "source": "OCPN Export",
+        "version": "1.0"
+    }
+}
