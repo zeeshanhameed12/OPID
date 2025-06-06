@@ -2,7 +2,7 @@ import json
 from graphviz import Digraph
 
 # === Step 1: Load OCPN JSON ===
-with open("opidT11.json", "r") as f:
+with open("opid_view.json", "r") as f:
     ocpn_json = json.load(f)
 
 # === Step 2: Assign consistent colors per object type ===
@@ -41,7 +41,7 @@ for place in ocpn_json["places"]:
         fillcolor = color_map[obj_type]
 
     dot.node(place_name,
-             label=place_name,
+             label="",
              shape="circle",
              style="filled",
              fillcolor=fillcolor)
@@ -72,4 +72,4 @@ for arc in ocpn_json["arcs"]:
     dot.edge(source, target, label=label, color=color, fontcolor=color, penwidth=penwidth)
 
 # === Step 7: Render and View ===
-dot.render("opidT1", view=True)
+dot.render("opid_view", view=True)
