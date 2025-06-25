@@ -1,0 +1,189 @@
+import pm4py
+import json
+import uuid
+import re
+from pm4py.algo.discovery.ocel.ocpn.variants import classic as ocpn_discovery
+from pm4py.objects.petri_net.obj import PetriNet
+from package import Place, Transition, Arc, OPID, get_common_transitions, get_transition_name
+
+# Load OCEL log
+filename = "selfocel.xml"
+ocel = pm4py.read_ocel2_xml(filename)
+print(f"The object types in the OCEL are: {pm4py.ocel.ocel_get_object_types(ocel)}")
+input_str = input("Enter object type pairs in the format (Obj1,Obj2),...: ")
+
+# Parse the input string into a list of tuples
+object_type_pairs = re.findall(r'\(([^,]+),([^)]+)\)', input_str)
+object_type_pairs = [(a.strip(), b.strip()) for a, b in object_type_pairs]
+
+print("Parsed pairs:", object_type_pairs)
+
+# Initialize OPID and OCPN discovery
+ocpn = ocpn_discovery.apply(ocel)
+opid = OPID("Self OCPN Export")
+
+# Add transitions from discovered OCPN
+for act in ocpn["activities"]:
+    opid.add_transition(Transition(name=act, label=act, silent=False))
+
+# Places and Arcs for each Petri Net
+for ot, (net, initial_marking, final_marking) in ocpn["petri_nets"].items():
+    for place in net.places:
+        place_name = f"place_{opid.unique_place_id}"
+        opid.place_name_map[place] = place_name
+        opid.unique_place_id += 1
+        opid.add_place(Place(
+            name=opid.place_name_map[place],
+            objectType=ot,
+            initial=place in initial_marking,
+            final=place in final_marking
+        ))
+
+    for arc in net.arcs:
+        if arc.source in opid.place_name_map:
+            source_name = opid.place_name_map[arc.source]
+            target_name = get_transition_name(arc.target, opid)
+        else:
+            source_name = get_transition_name(arc.source, opid)
+            target_name = opid.place_name_map[arc.target]
+        if type(arc.source) is PetriNet.Place:
+            is_double = (
+                arc.target.label in ocpn["double_arcs_on_activity"][ot]
+                and ocpn["double_arcs_on_activity"][ot][arc.target.label]
+            )
+            penwidth = "4.0" if is_double else "1.0"
+        elif type(arc.source) is PetriNet.Transition:
+            is_double = (
+                arc.source.label in ocpn["double_arcs_on_activity"][ot]
+                and ocpn["double_arcs_on_activity"][ot][arc.source.label]
+            )
+            penwidth = "4.0" if is_double else "1.0"
+        
+        opid.add_arc(Arc(
+            source=source_name,
+            target=target_name,
+            weight=penwidth,
+            variable=is_double,
+            inscription=ot[0].capitalize() if is_double else ot[0],
+        ))
+
+    # Handle final marking with tau end transitions and arcs
+    for place in final_marking:
+        silent_name = f"tau_end_{ot}_{uuid.uuid4()}"
+        opid.add_transition(Transition(name=silent_name, label="", silent=True))
+        opid.last_silent_transition[ot] = silent_name
+        opid.add_arc(Arc(
+            source=opid.place_name_map[place],
+            target=silent_name,
+            inscription=ot[0]
+        ))
+
+# Implement stable relationships (T_R) for the object type pairs
+for object_type_pair in object_type_pairs:
+    if len(object_type_pair) != 2:
+        print(f"Invalid pair: {object_type_pair}. Expected format is (objectType1, objectType2).")
+        exit(1)
+    
+    stable_relations = object_type_pair
+    common = get_common_transitions(ocpn, stable_relations[0], stable_relations[1], by_label=True)
+    transition_create_link = Transition(f"create_link_{stable_relations[0]}_{stable_relations[1]}", label="", silent=True)
+    opid.add_transition(transition_create_link)
+
+    for rel in stable_relations:
+        # Create places pb and pa
+        pb = Place(f"P_b{rel}", objectType=f"{rel}")
+        opid.add_place(pb)
+        pa = Place(f"P_a{rel}", objectType=f"{rel}")
+        opid.add_place(pa)
+
+        # Create tau start transitions
+        silent_name = f"tau_start_{rel}_{uuid.uuid4()}"
+        opid.add_transition(Transition(name=silent_name, label="", silent=True))
+        silent_name2 = f"tau_start_{rel}_{uuid.uuid4()}"
+        opid.add_transition(Transition(name=silent_name2, label="", silent=True))
+
+        # Retrieve the Petri net for this object type and handle arcs
+        net, initial_marking, final_marking = ocpn["petri_nets"][rel]
+        for arc in net.arcs:
+            if type(arc.source) is PetriNet.Place:
+                is_double = (
+                    arc.target.label in ocpn["double_arcs_on_activity"][rel]
+                    and ocpn["double_arcs_on_activity"][rel][arc.target.label]
+                )
+                penwidth = "4.0" if is_double else "1.0"
+            elif type(arc.source) is PetriNet.Transition:
+                is_double = (
+                    arc.source.label in ocpn["double_arcs_on_activity"][rel]
+                    and ocpn["double_arcs_on_activity"][rel][arc.source.label]
+                )
+                penwidth = "4.0" if is_double else "1.0"
+        
+        # Add arcs for pb, pa, and tau transitions
+        opid.add_arc(Arc(
+            source=silent_name,
+            target=pb.name,
+            inscription=f"v_{rel}"
+        ))
+        opid.add_arc(Arc(
+            source=pb.name,
+            weight=penwidth,
+            variable=is_double,
+            target=transition_create_link.name,
+            inscription=rel[0].capitalize() if is_double else rel[0],
+        ))
+        opid.add_arc(Arc(
+            source=transition_create_link.name,
+            target=pa.name,
+            weight=penwidth,
+            variable=is_double,
+            inscription=rel[0].capitalize() if is_double else rel[0]
+        ))
+        opid.add_arc(Arc(
+            source=pa.name,
+            target=silent_name2,
+            weight="1.0",
+            variable=False,
+            inscription=rel[0]
+        ))
+
+        # Add arcs from initial marking places
+        for place in initial_marking:
+            opid.add_arc(Arc(
+                source=silent_name2,
+                target=opid.place_name_map[place],
+                inscription=rel[0]
+            ))
+
+    # Create pL1 for stable relations
+    pL1 = Place(f"{object_type_pair}", objectType=f"{object_type_pair}")
+    opid.add_place(pL1)
+    opid.add_arc(Arc(
+        source=transition_create_link.name,
+        target=pL1.name,
+        weight="4.0",
+        variable=True,
+        inscription=f"{object_type_pair[0][0].capitalize()}_{object_type_pair[1][0].capitalize()}",
+    ))
+    opid.add_arc(Arc(
+        source=pL1.name,
+        target=opid.last_silent_transition[stable_relations[0]],
+        weight="1.0",
+        variable=False,
+        inscription=""
+    ))
+
+    # Create arcs from all common transitions to pL1
+    for transition in common:
+        opid.add_arc(Arc(
+            source=pL1.name,
+            target=str(transition),
+            weight="4.0",
+            variable=True,
+            inscription=f"{object_type_pair[0][0].capitalize()}_{object_type_pair[1][0].capitalize()}",
+            bidirectional=True
+        ))
+
+# Output to JSON
+output_path = "opid_view.json"
+with open(output_path, 'w') as json_file:
+    json.dump(opid.to_json(), json_file, indent=4)

@@ -81,14 +81,14 @@ class OPID:
 # Load OCEL log
 filename = "selfocel.xml"
 ocel = pm4py.read_ocel2_xml(filename)
-customized_View = input("please enter the pair of object types (R) you want to visualize in the OPID view (e.g., 'frame,handle'): ")
+"""customized_View = input("please enter the pair of object types (R) you want to visualize in the OPID view (e.g., 'frame,handle'): ")
 # Split the input by comma and strip whitespace and store in a list
 object_types = customized_View.split(',')
 
 # Filter OCEL by object types
 filtered_ocel = pm4py.filtering.filter_ocel_object_types(ocel, object_types)
-ocpn = ocpn_discovery.apply(filtered_ocel)
-
+ocpn = ocpn_discovery.apply(filtered_ocel)"""
+ocpn = ocpn_discovery.apply(ocel)
 opid = OPID("Self OCPN Export")
 # Add transitions
 for act in ocpn["activities"]:

@@ -1,13 +1,12 @@
 import json
 from graphviz import Digraph
+import colorsys
 
 # === Step 1: Load OCPN JSON ===
 with open("opid_view.json", "r") as f:
     ocpn_json = json.load(f)
 
 # === Step 2: Assign consistent colors per object type ===
-import colorsys
-
 def get_color_palette(object_types):
     palette = {}
     total = len(object_types)
@@ -69,7 +68,10 @@ for arc in ocpn_json["arcs"]:
             color = color_map.get(place["objectType"], "black")
             break
 
-    dot.edge(source, target, label=label, color=color, fontcolor=color, penwidth=penwidth)
+    # Check if the arc is bidirectional and set direction accordingly
+    dir_attr = "both" if arc.get("bidirectional", False) else "forward"
+
+    dot.edge(source, target, label=label, color=color, fontcolor=color, penwidth=penwidth, dir=dir_attr)
 
 # === Step 7: Render and View ===
 dot.render("opid_view", view=True)
