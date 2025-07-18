@@ -3,7 +3,7 @@ from graphviz import Digraph
 import colorsys
 
 # === Load JSON data ===
-with open("opid_view.json", "r") as f:
+with open("opid_fi_v2.json", "r") as f:
     ocpn_data_list = json.load(f)
 
 # Function to get consistent color mapping

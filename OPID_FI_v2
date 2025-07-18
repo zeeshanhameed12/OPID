@@ -8,10 +8,11 @@ from package import Place, Transition, Arc, OPID, get_common_transitions, get_tr
 
 # Load OCEL log
 filename = "selfocel.xml"
+#filename = "ContainerLogistics.xml"
 ocel = pm4py.read_ocel2_xml(filename)
 print(f"The object types in the OCEL are: {pm4py.ocel.ocel_get_object_types(ocel)}")
 input_str = input("Enter object type pairs in the format (Obj1,Obj2),...: ")
-
+#
 # Parse the input string into a list of tuples
 object_type_pairs = re.findall(r'\(([^,]+),([^)]+)\)', input_str)
 object_type_pairs = [(a.strip(), b.strip()) for a, b in object_type_pairs]
@@ -164,25 +165,23 @@ for object_type_pair in object_type_pairs:
 
     # create arcs from all common transitions to pL1
     for transition in common:
+        has_variable_input = False
+        # Check all arcs in the OPID instance
+        for arc in opid.arcs:
+            # If this arc goes into the transition and is variable
+            if arc.target == str(transition) and getattr(arc, "variable", False):
+                has_variable_input = True
+                break  # No need to check further arcs
+
         opid.add_arc(Arc(
-                source=pL1.name,
-                target=str(transition),
-                weight="4.0",
-                variable=True,
-                inscription=f"{object_type_pair[0][0].capitalize()}_{object_type_pair[1][0].capitalize()}",
-                bidirectional=True
-                #inscription=f"{rel[0][0]}_{rel[1][0]}"
-                #inscription=rel[0].capitalize() if is_double else rel[0]
-            ))
-        """opid.add_arc(Arc(
-                source=str(transition),
-                target=pL1.name,
-                weight="4.0",
-                variable=True,
-                inscription="links"
-                #inscription=f"{rel[0][0]}_{rel[1][0]}"
-                #inscription=rel[0].capitalize() if is_double else rel[0]
-            ))"""
+            source=pL1.name,
+            target=str(transition),
+            weight="4.0",
+            variable=has_variable_input,
+            inscription=f"{object_type_pair[0][0].capitalize()}_{object_type_pair[1][0].capitalize()}",
+            bidirectional=True
+        ))
+
     # append opid to results at same level in json structure for collective output as json
     results.append({
         "object_type_pair": object_type_pair,
@@ -190,6 +189,6 @@ for object_type_pair in object_type_pairs:
     })
 # Output to JSON
 # After the loop finishes, write all results to JSON
-output_path = "opid_view.json"
+output_path = "opid_fi_v2.json"
 with open(output_path, 'w') as json_file:
     json.dump(results, json_file, indent=4)
