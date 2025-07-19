@@ -1,0 +1,689 @@
+{
+    "name": "Self OCPN Export",
+    "places": [
+        {
+            "name": "place_0",
+            "objectType": "wheel",
+            "initial": true,
+            "final": false
+        },
+        {
+            "name": "place_1",
+            "objectType": "wheel",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "place_2",
+            "objectType": "wheel",
+            "initial": false,
+            "final": true
+        },
+        {
+            "name": "place_3",
+            "objectType": "frame",
+            "initial": true,
+            "final": false
+        },
+        {
+            "name": "place_4",
+            "objectType": "frame",
+            "initial": false,
+            "final": true
+        },
+        {
+            "name": "place_5",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "place_6",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "place_7",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "place_8",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "place_9",
+            "objectType": "handle",
+            "initial": true,
+            "final": false
+        },
+        {
+            "name": "place_10",
+            "objectType": "handle",
+            "initial": false,
+            "final": true
+        },
+        {
+            "name": "place_11",
+            "objectType": "handle",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "P_bwheel",
+            "objectType": "wheel",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "P_awheel",
+            "objectType": "wheel",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "P_bframe",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "P_aframe",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "('wheel', 'frame')",
+            "objectType": "('wheel', 'frame')",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "P_bhandle",
+            "objectType": "handle",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "P_ahandle",
+            "objectType": "handle",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "P_bframe",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "P_aframe",
+            "objectType": "frame",
+            "initial": false,
+            "final": false
+        },
+        {
+            "name": "('handle', 'frame')",
+            "objectType": "('handle', 'frame')",
+            "initial": false,
+            "final": false
+        }
+    ],
+    "transitions": [
+        {
+            "name": "collect",
+            "label": "collect",
+            "silent": false,
+            "properties": {}
+        },
+        {
+            "name": "assemble_w",
+            "label": "assemble_w",
+            "silent": false,
+            "properties": {}
+        },
+        {
+            "name": "assemble_h",
+            "label": "assemble_h",
+            "silent": false,
+            "properties": {}
+        },
+        {
+            "name": "tau_end_wheel_c286c5c8-d92e-4180-bf2d-8031052be268",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tauJoin_2",
+            "label": "tauJoin_2",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_end_frame_b96dd1e7-0894-4256-acff-834af0d32439",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_end_handle_9db6122e-67a3-4a2c-be36-eebfe758ce1c",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "create_link_wheel_frame",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_start_wheel_0c1f4384-e76e-41c4-9618-0a3fec248a18",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_start_wheel_e777b531-4ade-436a-a554-6b1362ca4e7b",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_start_frame_467fcdfb-f2e1-47c2-ad99-8c96c062ac3f",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_start_frame_191759b6-a4ee-4f12-8b0b-a52f74b6a05b",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "create_link_handle_frame",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_start_handle_b903a11d-3333-4890-b178-d65227b39921",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_start_handle_8afcf948-b05d-49cd-8bae-c89152741e9a",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_start_frame_c7bcf129-96cf-4615-8c9f-7f744ef6a076",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        },
+        {
+            "name": "tau_start_frame_7938fa77-1f40-444a-9989-36fc9f73fe31",
+            "label": "",
+            "silent": true,
+            "properties": {}
+        }
+    ],
+    "arcs": [
+        {
+            "source": "place_0",
+            "target": "collect",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "assemble_w",
+            "target": "place_2",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_1",
+            "target": "assemble_w",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "collect",
+            "target": "place_1",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_2",
+            "target": "tau_end_wheel_c286c5c8-d92e-4180-bf2d-8031052be268",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "w",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "assemble_w",
+            "target": "place_6",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "assemble_h",
+            "target": "place_8",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "collect",
+            "target": "place_7",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_3",
+            "target": "collect",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "tauJoin_2",
+            "target": "place_4",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_6",
+            "target": "tauJoin_2",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_5",
+            "target": "assemble_w",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "collect",
+            "target": "place_5",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_8",
+            "target": "tauJoin_2",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_7",
+            "target": "assemble_h",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_4",
+            "target": "tau_end_frame_b96dd1e7-0894-4256-acff-834af0d32439",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_9",
+            "target": "collect",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_11",
+            "target": "assemble_h",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "assemble_h",
+            "target": "place_10",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "collect",
+            "target": "place_11",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "place_10",
+            "target": "tau_end_handle_9db6122e-67a3-4a2c-be36-eebfe758ce1c",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "tau_start_wheel_0c1f4384-e76e-41c4-9618-0a3fec248a18",
+            "target": "P_bwheel",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "v_wheel",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "P_bwheel",
+            "target": "create_link_wheel_frame",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "create_link_wheel_frame",
+            "target": "P_awheel",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "P_awheel",
+            "target": "tau_start_wheel_e777b531-4ade-436a-a554-6b1362ca4e7b",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "w",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "tau_start_wheel_e777b531-4ade-436a-a554-6b1362ca4e7b",
+            "target": "place_0",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "w",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "tau_start_frame_467fcdfb-f2e1-47c2-ad99-8c96c062ac3f",
+            "target": "P_bframe",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "v_frame",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "P_bframe",
+            "target": "create_link_wheel_frame",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "create_link_wheel_frame",
+            "target": "P_aframe",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "P_aframe",
+            "target": "tau_start_frame_191759b6-a4ee-4f12-8b0b-a52f74b6a05b",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "tau_start_frame_191759b6-a4ee-4f12-8b0b-a52f74b6a05b",
+            "target": "place_3",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "create_link_wheel_frame",
+            "target": "('wheel', 'frame')",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W_F",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "('wheel', 'frame')",
+            "target": "tau_end_wheel_c286c5c8-d92e-4180-bf2d-8031052be268",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "('wheel', 'frame')",
+            "target": "collect",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W_F",
+            "properties": {},
+            "bidirectional": true
+        },
+        {
+            "source": "('wheel', 'frame')",
+            "target": "assemble_w",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "W_F",
+            "properties": {},
+            "bidirectional": true
+        },
+        {
+            "source": "tau_start_handle_b903a11d-3333-4890-b178-d65227b39921",
+            "target": "P_bhandle",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "v_handle",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "P_bhandle",
+            "target": "create_link_handle_frame",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "create_link_handle_frame",
+            "target": "P_ahandle",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "P_ahandle",
+            "target": "tau_start_handle_8afcf948-b05d-49cd-8bae-c89152741e9a",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "tau_start_handle_8afcf948-b05d-49cd-8bae-c89152741e9a",
+            "target": "place_9",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "h",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "tau_start_frame_c7bcf129-96cf-4615-8c9f-7f744ef6a076",
+            "target": "P_bframe",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "v_frame",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "P_bframe",
+            "target": "create_link_handle_frame",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "create_link_handle_frame",
+            "target": "P_aframe",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "P_aframe",
+            "target": "tau_start_frame_7938fa77-1f40-444a-9989-36fc9f73fe31",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "tau_start_frame_7938fa77-1f40-444a-9989-36fc9f73fe31",
+            "target": "place_3",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "f",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "create_link_handle_frame",
+            "target": "('handle', 'frame')",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "H_F",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "('handle', 'frame')",
+            "target": "tau_end_handle_9db6122e-67a3-4a2c-be36-eebfe758ce1c",
+            "weight": "1.0",
+            "variable": false,
+            "inscription": "",
+            "properties": {},
+            "bidirectional": false
+        },
+        {
+            "source": "('handle', 'frame')",
+            "target": "collect",
+            "weight": "4.0",
+            "variable": true,
+            "inscription": "H_F",
+            "properties": {},
+            "bidirectional": true
+        },
+        {
+            "source": "('handle', 'frame')",
+            "target": "assemble_h",
+            "weight": "4.0",
+            "variable": false,
+            "inscription": "H_F",
+            "properties": {},
+            "bidirectional": true
+        }
+    ],
+    "properties": {
+        "creator": "PM4Py",
+        "source": "OCPN Export",
+        "version": "1.0"
+    }
+}

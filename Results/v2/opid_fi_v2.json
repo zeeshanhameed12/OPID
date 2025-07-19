@@ -1,0 +1,882 @@
+[
+    {
+        "object_type_pair": [
+            "wheel",
+            "frame"
+        ],
+        "data": {
+            "name": "Self OCPN Export for pair ('wheel', 'frame')",
+            "places": [
+                {
+                    "name": "place_0",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_1",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_2",
+                    "objectType": "frame",
+                    "initial": true,
+                    "final": false
+                },
+                {
+                    "name": "place_3",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": true
+                },
+                {
+                    "name": "place_4",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_5",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_6",
+                    "objectType": "wheel",
+                    "initial": true,
+                    "final": false
+                },
+                {
+                    "name": "place_7",
+                    "objectType": "wheel",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_8",
+                    "objectType": "wheel",
+                    "initial": false,
+                    "final": true
+                },
+                {
+                    "name": "P_bwheel",
+                    "objectType": "wheel",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "P_awheel",
+                    "objectType": "wheel",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "P_bframe",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "P_aframe",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "('wheel', 'frame')",
+                    "objectType": "('wheel', 'frame')",
+                    "initial": false,
+                    "final": false
+                }
+            ],
+            "transitions": [
+                {
+                    "name": "collect",
+                    "label": "collect",
+                    "silent": false,
+                    "properties": {}
+                },
+                {
+                    "name": "assemble_w",
+                    "label": "assemble_w",
+                    "silent": false,
+                    "properties": {}
+                },
+                {
+                    "name": "assemble_h",
+                    "label": "assemble_h",
+                    "silent": false,
+                    "properties": {}
+                },
+                {
+                    "name": "tauJoin_2",
+                    "label": "tauJoin_2",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_end_frame_99d17dad-f9f0-41e0-bd11-b12ed6084039",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_end_wheel_62a1d995-42cc-4e7e-a6de-6f6152d685a0",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "create_link_wheel_frame",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_start_wheel_7af67bff-5e36-4c65-a030-1c5b1e8a4383",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_start_wheel_136844cc-4d95-45f2-a8df-5f8e74dbde4a",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_start_frame_6f2edc02-e90c-4067-bbb7-2964f19c6db9",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_start_frame_e1ebc668-5d4b-42db-9b5e-58d7b2b256d7",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                }
+            ],
+            "arcs": [
+                {
+                    "source": "tauJoin_2",
+                    "target": "place_3",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "assemble_w",
+                    "target": "place_0",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_4",
+                    "target": "assemble_h",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_2",
+                    "target": "collect",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "collect",
+                    "target": "place_4",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_0",
+                    "target": "tauJoin_2",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_1",
+                    "target": "assemble_w",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "collect",
+                    "target": "place_1",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_5",
+                    "target": "tauJoin_2",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "assemble_h",
+                    "target": "place_5",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_3",
+                    "target": "tau_end_frame_99d17dad-f9f0-41e0-bd11-b12ed6084039",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_6",
+                    "target": "collect",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_7",
+                    "target": "assemble_w",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "assemble_w",
+                    "target": "place_8",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "collect",
+                    "target": "place_7",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_8",
+                    "target": "tau_end_wheel_62a1d995-42cc-4e7e-a6de-6f6152d685a0",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "w",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tau_start_wheel_7af67bff-5e36-4c65-a030-1c5b1e8a4383",
+                    "target": "P_bwheel",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "v_wheel",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "P_bwheel",
+                    "target": "create_link_wheel_frame",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "create_link_wheel_frame",
+                    "target": "P_awheel",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "P_awheel",
+                    "target": "tau_start_wheel_136844cc-4d95-45f2-a8df-5f8e74dbde4a",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "w",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tau_start_wheel_136844cc-4d95-45f2-a8df-5f8e74dbde4a",
+                    "target": "place_6",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "w",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tau_start_frame_6f2edc02-e90c-4067-bbb7-2964f19c6db9",
+                    "target": "P_bframe",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "v_frame",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "P_bframe",
+                    "target": "create_link_wheel_frame",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "create_link_wheel_frame",
+                    "target": "P_aframe",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "P_aframe",
+                    "target": "tau_start_frame_e1ebc668-5d4b-42db-9b5e-58d7b2b256d7",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tau_start_frame_e1ebc668-5d4b-42db-9b5e-58d7b2b256d7",
+                    "target": "place_2",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "create_link_wheel_frame",
+                    "target": "('wheel', 'frame')",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W_F",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "('wheel', 'frame')",
+                    "target": "tau_end_wheel_62a1d995-42cc-4e7e-a6de-6f6152d685a0",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "('wheel', 'frame')",
+                    "target": "collect",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W_F",
+                    "properties": {},
+                    "bidirectional": true
+                },
+                {
+                    "source": "('wheel', 'frame')",
+                    "target": "assemble_w",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "W_F",
+                    "properties": {},
+                    "bidirectional": true
+                }
+            ],
+            "properties": {
+                "creator": "PM4Py",
+                "source": "OCPN Export",
+                "version": "1.0"
+            }
+        }
+    },
+    {
+        "object_type_pair": [
+            "handle",
+            "frame"
+        ],
+        "data": {
+            "name": "Self OCPN Export for pair ('handle', 'frame')",
+            "places": [
+                {
+                    "name": "place_0",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_1",
+                    "objectType": "frame",
+                    "initial": true,
+                    "final": false
+                },
+                {
+                    "name": "place_2",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_3",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": true
+                },
+                {
+                    "name": "place_4",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_5",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_6",
+                    "objectType": "handle",
+                    "initial": true,
+                    "final": false
+                },
+                {
+                    "name": "place_7",
+                    "objectType": "handle",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "place_8",
+                    "objectType": "handle",
+                    "initial": false,
+                    "final": true
+                },
+                {
+                    "name": "P_bhandle",
+                    "objectType": "handle",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "P_ahandle",
+                    "objectType": "handle",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "P_bframe",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "P_aframe",
+                    "objectType": "frame",
+                    "initial": false,
+                    "final": false
+                },
+                {
+                    "name": "('handle', 'frame')",
+                    "objectType": "('handle', 'frame')",
+                    "initial": false,
+                    "final": false
+                }
+            ],
+            "transitions": [
+                {
+                    "name": "collect",
+                    "label": "collect",
+                    "silent": false,
+                    "properties": {}
+                },
+                {
+                    "name": "assemble_w",
+                    "label": "assemble_w",
+                    "silent": false,
+                    "properties": {}
+                },
+                {
+                    "name": "assemble_h",
+                    "label": "assemble_h",
+                    "silent": false,
+                    "properties": {}
+                },
+                {
+                    "name": "tauJoin_2",
+                    "label": "tauJoin_2",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_end_frame_322f07fb-3508-4a33-af61-0c6bf76d674c",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_end_handle_46ff4d2b-3e03-428b-8ee6-b3fa2e4cb7fb",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "create_link_handle_frame",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_start_handle_8c53dc6c-6d87-4710-bca7-46ebd3055481",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_start_handle_adf58fc3-9ff4-4729-9df7-1e97bd6b07c4",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_start_frame_d8e3866a-085d-47c8-9d38-57bc95c95be2",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                },
+                {
+                    "name": "tau_start_frame_622e118a-3902-4736-93c2-5acb72f68f7d",
+                    "label": "",
+                    "silent": true,
+                    "properties": {}
+                }
+            ],
+            "arcs": [
+                {
+                    "source": "place_2",
+                    "target": "assemble_w",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "assemble_w",
+                    "target": "place_0",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_4",
+                    "target": "assemble_h",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "assemble_h",
+                    "target": "place_5",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_1",
+                    "target": "collect",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "collect",
+                    "target": "place_4",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tauJoin_2",
+                    "target": "place_3",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "collect",
+                    "target": "place_2",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_0",
+                    "target": "tauJoin_2",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_5",
+                    "target": "tauJoin_2",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_3",
+                    "target": "tau_end_frame_322f07fb-3508-4a33-af61-0c6bf76d674c",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_6",
+                    "target": "collect",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_7",
+                    "target": "assemble_h",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "assemble_h",
+                    "target": "place_8",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "collect",
+                    "target": "place_7",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "place_8",
+                    "target": "tau_end_handle_46ff4d2b-3e03-428b-8ee6-b3fa2e4cb7fb",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tau_start_handle_8c53dc6c-6d87-4710-bca7-46ebd3055481",
+                    "target": "P_bhandle",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "v_handle",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "P_bhandle",
+                    "target": "create_link_handle_frame",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "create_link_handle_frame",
+                    "target": "P_ahandle",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "P_ahandle",
+                    "target": "tau_start_handle_adf58fc3-9ff4-4729-9df7-1e97bd6b07c4",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tau_start_handle_adf58fc3-9ff4-4729-9df7-1e97bd6b07c4",
+                    "target": "place_6",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "h",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tau_start_frame_d8e3866a-085d-47c8-9d38-57bc95c95be2",
+                    "target": "P_bframe",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "v_frame",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "P_bframe",
+                    "target": "create_link_handle_frame",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "create_link_handle_frame",
+                    "target": "P_aframe",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "P_aframe",
+                    "target": "tau_start_frame_622e118a-3902-4736-93c2-5acb72f68f7d",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "tau_start_frame_622e118a-3902-4736-93c2-5acb72f68f7d",
+                    "target": "place_1",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "f",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "create_link_handle_frame",
+                    "target": "('handle', 'frame')",
+                    "weight": "4.0",
+                    "variable": true,
+                    "inscription": "H_F",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "('handle', 'frame')",
+                    "target": "tau_end_handle_46ff4d2b-3e03-428b-8ee6-b3fa2e4cb7fb",
+                    "weight": "1.0",
+                    "variable": false,
+                    "inscription": "",
+                    "properties": {},
+                    "bidirectional": false
+                },
+                {
+                    "source": "('handle', 'frame')",
+                    "target": "collect",
+                    "weight": "4.0",
+                    "variable": false,
+                    "inscription": "H_F",
+                    "properties": {},
+                    "bidirectional": true
+                },
+                {
+                    "source": "('handle', 'frame')",
+                    "target": "assemble_h",
+                    "weight": "4.0",
+                    "variable": false,
+                    "inscription": "H_F",
+                    "properties": {},
+                    "bidirectional": true
+                }
+            ],
+            "properties": {
+                "creator": "PM4Py",
+                "source": "OCPN Export",
+                "version": "1.0"
+            }
+        }
+    }
+]
