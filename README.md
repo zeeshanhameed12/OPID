@@ -49,7 +49,7 @@ This is based on the assumption that a single frame can have multiple wheels.
 
 **Important**:
 - When specifying object type pairs, always list the many-type first.
-- The silent transition that consumes tokens from the link place at the end of the process should correspond to the many-type object.
+- The silent transition that consumes tokens from the link place at the end of the process corresponds to the many-type object.
 
 ---
 
